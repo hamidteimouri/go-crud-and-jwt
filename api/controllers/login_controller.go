@@ -15,10 +15,9 @@ import (
 func (server *Server) Login(w http.ResponseWriter, r *http.Request) {
 	body, err := ioutil.ReadAll(r.Body)
 	if err != nil {
-		//response.ERROR(w, http.StatusUnprocessableEntity, err)
-		//return
+		response.ERROR(w, http.StatusUnprocessableEntity, err)
+		return
 	}
-	fmt.Println("this is in method")
 	fmt.Println(body,err)
 	user := models.User{}
 	err = json.Unmarshal(body, &user)
